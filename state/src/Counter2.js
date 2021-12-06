@@ -1,16 +1,8 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-    constructor(props) {
-        //constructor를 작성할때는 반드시 super(props)를 호출해야함
-        super(props);
-
-        this.state = {
-            // state의 초기값 설정(객체 형식이어야 함)
-            number: 0,
-            fixedNumber: 0, // state 객체안에 값이 여러개 일때 예시
-        };
-    }
+    state ={ number: 0,     //construcotr를 사용하지 않고 state의 초기값을 지정하는 방법
+    fixedNumber: 0}
     render() {
         const { number, fixedNumber } = this.state; //state를 조회할때 this.state로 조회
         return (
