@@ -14,6 +14,7 @@ class EventPractice extends Component {
                     name="message"
                     placeholder="아무거나 입력해 보세요"
                     value={this.state.message} //state에 input(value)값 담기
+                    //onChange => 변화가 생길시
                     onChange={(e) => {
                         // console.log(e.target.value); -> 값이 바뀔때마다 바뀌는 값을 콘솔에 기록
                         // console.log(e);
@@ -24,8 +25,9 @@ class EventPractice extends Component {
                     }}
                 />
                 <button
+                    //onClick => 클릭했을시
                     onClick={() => {
-                        alert(this.state.message); //알림창
+                        alert(this.state.message); //알림창띄우기
                         this.setState({
                             message: "",
                         });
