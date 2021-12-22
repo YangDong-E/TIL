@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const Counter = () => {
     const [value, setValue] = useState(0);
+    //     상태값 , 상태 함수       기본값
 
     return (
         <div>
