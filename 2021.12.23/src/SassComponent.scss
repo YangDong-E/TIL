@@ -1,0 +1,48 @@
+@import './styles/utils.scss'; // 전역으로 사용되는 scss는 따로 @import하여 사용가능
+
+.SassComponent {
+    display: flex;
+    background: $oc-gray-2;
+    @include media('<768px') {
+        background: $oc-gray-9;
+    }
+    .box {
+        // 일반 CSS에서는 .SassComponent .box 와 같은 문법
+        background: $red;
+        cursor: pointer;
+        transition: all 0.3s ease-in;
+        &.red {
+            // .red 클래스가 .box와 함께 사용되었을 때
+            background: $red;
+            @include square(1);
+        }
+        &.orange {
+            background: $orange;
+            @include square(2);
+        }
+        &.yellow {
+            background: $yellow;
+            @include square(3);
+        }
+        &.green {
+            background: $green;
+            @include square(4);
+        }
+        &.blue {
+            background: $blue;
+            @include square(5);
+        }
+        &.indigo {
+            background: $indigo;
+            @include square(6);
+        }
+        &.violet {
+            background: $violet;
+            @include square(7);
+        }
+        &:hover {
+            // .box에 마우스를 올렸을 때
+            background: black;
+        }
+    }
+}
