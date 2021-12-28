@@ -21,6 +21,12 @@ const TodoInsert = ({ onInsert }) => {
         [onInsert, value],
     );
 
+    // onSubmit 대신 onClick으로도 처리 가능하다
+    // const onClick =useCallback(()=>{
+    //     onInsert(value);
+    //     setValue('');
+    // },[onInsert,value])
+
     return (
         <from className="TodoInsert" onSubmit={onSubmit}>
             <input
@@ -29,6 +35,7 @@ const TodoInsert = ({ onInsert }) => {
                 onChange={onChange}
             />
             <button type="submit">
+                {/* <button onClick={onClick}>  onSubmit 대신 onClick으로도 처리 가능 */}
                 <MdAdd />
             </button>
         </from>
