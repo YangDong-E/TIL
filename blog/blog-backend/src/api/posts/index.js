@@ -12,6 +12,7 @@ posts.patch('/:id', postsCtrl.update);
 module.exports = posts;
 
 // posts.ctrl.js 컨트롤러 사용전
+
 // const printInfo = (ctx) => {
 //     ctx.body = {
 //         method: ctx.method,
