@@ -5,10 +5,15 @@ const posts = new Router();
 
 posts.get('/', postsCtrl.list);
 posts.post('/', postsCtrl.write);
-posts.get('/:id', postsCtrl.read);
-posts.delete('/:id', postsCtrl.remove);
-posts.put('/:id', postsCtrl.replace);
-posts.patch('/:id', postsCtrl.update);
+
+const post = new Router(); // /api/posts/:id
+post.get('/', postsCtrl.read);
+post.delete('/', postsCtrl.remove);
+// posts.put('/:id', postsCtrl.replace);
+post.patch('/', postsCtrl.update);
+
+posts.use('/:id', postsCtrl.checkObjectId, post.routes());
+
 module.exports = posts;
 
 // posts.ctrl.js 컨트롤러 사용전
