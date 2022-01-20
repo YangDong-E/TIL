@@ -29,6 +29,7 @@ router.use('/api', api.routes()); // api 라우트 적용
 
 // 라우터 적용 전에 bodyParser 적용
 app.use(bodyParser());
+// 토큰 미들웨어 적용
 app.use(jwtMiddleware);
 
 // app 인스턴스에 라우터 적용
