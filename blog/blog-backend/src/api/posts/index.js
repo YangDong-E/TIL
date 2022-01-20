@@ -9,9 +9,9 @@ posts.post('/', checkLoggedIn, postsCtrl.write);
 
 const post = new Router(); // /api/posts/:id
 post.get('/', postsCtrl.read);
-post.delete('/', checkLoggedIn, postsCtrl.remove);
+post.delete('/', checkLoggedIn, postsCtrl.checkOwnPost, postsCtrl.remove);
 // posts.put('/:id', postsCtrl.replace);
-post.patch('/', checkLoggedIn, postsCtrl.update);
+post.patch('/', checkLoggedIn, postsCtrl.checkOwnPost, postsCtrl.update);
 
 posts.use('/:id', postsCtrl.getPostById, post.routes());
 
