@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AuthForm from '../../components/auth/AuthForm';
 import { changeField, initializeForm, register } from '../../modules/auth';
-import user, {check} from '../../modules/user'
+import {check} from '../../modules/user'
 import { withRouter } from 'react-router-dom';
 
 
 
 const RegisterForm = ({history}) => {
     const dispatch = useDispatch();
-    const {form,auth,authError} = useSelector(({auth,user})=>({
+    const {form,auth,authError,user} = useSelector(({auth,user})=>({
         form: auth.register,
         auth: auth.auth,
         authError: auth.authError,
@@ -64,7 +64,7 @@ const RegisterForm = ({history}) => {
             console.log('check API 성공');
             console.log(user)
         }
-    },[history, user])
+    },[history,user])
 
     return(
         <AuthForm 
