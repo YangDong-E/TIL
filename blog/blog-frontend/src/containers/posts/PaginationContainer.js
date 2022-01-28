@@ -29,4 +29,4 @@ const PaginationContainer = ({ location, match }) => {
     );
 };
 
-export default PaginationContainer;
+export default withRouter(PaginationContainer);
