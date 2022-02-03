@@ -21,7 +21,7 @@ const PostListContainer = ({ location, match }) => {
             ignoreQueryPrefix: true,
         });
         dispatch(listPosts({ tag, username, page }));
-    }, [dispatch, location.search]);
+    }, [dispatch, match.params, location.search]);
 
     return (
         <PostList

@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Responsive from '../common/Responsive';
 import Button from '../common/Button';
 import palette from '../../lib/styles/palette';
 import SubInfo from '../common/SubInfo';
 import Tags from '../common/Tags';
-import { Link } from 'react-router-dom';
 
 const PostListBlock = styled(Responsive)`
     margin-top: 3rem;
 `;
+
 const WritePostButtonWrapper = styled.div`
     display: flex;
     justify-content: flex-end;
@@ -35,36 +36,11 @@ const PostItemBlock = styled.div`
             color: ${palette.gray[6]};
         }
     }
+
     p {
         margin-top: 2rem;
     }
 `;
-
-// const SubInfo = styled.div`
-//     /* margin-top: 1rem; */
-//     color: ${palette.gray[6]};
-
-//     /* span 사이에 가운뎃점 문자 보여 주기 */
-//     span + span:before {
-//         color: ${palette.gray[4]};
-//         padding-left: 0.25rem;
-//         padding-right: 0.25rem;
-//         content: '\\B7'; /* 가운뎃점 문자 */
-//     }
-// `;
-
-// const Tags = styled.div`
-//     margin-top: 0.5rem;
-//     .tag {
-//         display: inline-block;
-//         color: ${palette.cyan[7]};
-//         text-decoration: none;
-//         margin-right: 0.5rem;
-//         &:hover {
-//             color: ${palette.cyan[6]};
-//         }
-//     }
-// `;
 
 const PostItem = ({ post }) => {
     const { publishedDate, user, tags, title, body, _id } = post;
@@ -101,10 +77,9 @@ const PostList = ({ posts, loading, error, showWriteButton }) => {
             {/* 로딩 중이 아니고, 포스트 배열이 존재할 때만 보여 줌 */}
             {!loading && posts && (
                 <div>
-                    {posts &&
-                        posts.map((post) => (
-                            <PostItem post={post} key={post._id} />
-                        ))}
+                    {posts.map((post) => (
+                        <PostItem post={post} key={post._id} />
+                    ))}
                 </div>
             )}
         </PostListBlock>
