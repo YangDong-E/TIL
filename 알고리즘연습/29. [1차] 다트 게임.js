@@ -44,38 +44,38 @@ for (let j = 0; j < answer.length; j++) {
 console.log(sum);
 
 // 두번째 답
-// let answer = 0;
-// let scoreArray = [];
-// let score = "";
+let answer = 0;
+let scoreArray = [];
+let score = "";
 
-// dartResultLength = dartResult.length;
+dartResultLength = dartResult.length;
 
-// for (let i = 0; i < dartResultLength; i++) {
-//   const currentResult = dartResult[i];
+for (let i = 0; i < dartResultLength; i++) {
+  const currentResult = dartResult[i];
 
-//   if (currentResult === "S") {
-//     scoreArray.push(parseInt(score));
-//     score = "";
-//   } else if (currentResult === "D") {
-//     scoreArray.push(parseInt(score) ** 2);
-//     score = "";
-//   } else if (currentResult === "T") {
-//     scoreArray.push(parseInt(score) ** 3);
-//     socre = "";
-//   } else if (currentResult === "*") {
-//     scoreArrayLength = scoreArray.length;
-//     if (scoreArrayLength === 1) {
-//       scoreArray[0] *= 2;
-//     } else if (scoreArrayLength > 1) {
-//       scoreArray[scoreArrayLength - 1] *= 2;
-//       scoreArray[scoreArrayLength - 2] *= 2;
-//     }
-//   } else if (currentResult === "#") {
-//     scoreArray[scoreArray.length - 1] *= -1;
-//   } else {
-//     score += currentResult;
-//   }
-// }
+  if (currentResult === "S") {
+    scoreArray.push(parseInt(score));
+    score = "";
+  } else if (currentResult === "D") {
+    scoreArray.push(parseInt(score) ** 2);
+    score = "";
+  } else if (currentResult === "T") {
+    scoreArray.push(parseInt(score) ** 3);
+    score = "";
+  } else if (currentResult === "*") {
+    scoreArrayLength = scoreArray.length;
+    if (scoreArrayLength === 1) {
+      scoreArray[0] *= 2;
+    } else if (scoreArrayLength > 1) {
+      scoreArray[scoreArrayLength - 1] *= 2;
+      scoreArray[scoreArrayLength - 2] *= 2;
+    }
+  } else if (currentResult === "#") {
+    scoreArray[scoreArray.length - 1] *= -1;
+  } else {
+    score += currentResult;
+  }
+}
 
-// answer = scoreArray.reduce((prev, curr) => prev + curr, 0);
-// console.log(answer);
+answer = scoreArray.reduce((prev, curr) => prev + curr, 0);
+console.log(answer);
