@@ -1,0 +1,24 @@
+body {
+  margin: 50px auto 20px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+/* 처음엔 현재 금액이 0원이므로 전부 빨간색으로 초기화한다 */
+#coke,
+#water,
+#coffee {
+  width: 100px;
+  color: white;
+  background: rgb(64, 64, 64);
+}
+
+#btn1,
+#btn2,
+#btn3,
+#btn4,
+#btn5 {
+  width: 75px;
+  color: white;
+  background: #6694ff;
+}
