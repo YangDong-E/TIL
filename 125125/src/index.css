@@ -1,6 +1,5 @@
 body {
-  margin: 50px auto 20px;
-  font-family: sans-serif;
+  margin: 100px auto 10px;
   text-align: center;
 }
 
@@ -8,7 +7,7 @@ body {
 #coke,
 #water,
 #coffee {
-  width: 100px;
+  width: 126px;
   color: white;
   background: rgb(64, 64, 64);
 }
@@ -18,7 +17,23 @@ body {
 #btn3,
 #btn4,
 #btn5 {
-  width: 75px;
+  width: 100px;
   color: white;
   background: #6694ff;
+}
+
+#return {
+  margin: 5px;
+  background: red;
+  border-radius: 0.7rem;
+  width: 70px;
+}
+
+#current {
+  margin: 2px;
+}
+
+#Kor,
+#Eng {
+  border-radius: 0.7rem;
 }

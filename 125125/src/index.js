@@ -20,6 +20,10 @@ function color_change() {
     document.getElementById("coke").style.color = "rgb(255,51,51)";
     document.getElementById("water").style.color = "rgb(51,255,51)";
     document.getElementById("coffee").style.color = "rgb(255,51,51)";
+  } else if (coin === 0) {
+    document.getElementById("coke").style.color = "white";
+    document.getElementById("water").style.color = "white";
+    document.getElementById("coffee").style.color = "white";
   } else {
     document.getElementById("coke").style.color = "rgb(255,51,51)";
     document.getElementById("water").style.color = "rgb(255,51,51)";
@@ -95,6 +99,32 @@ function click_coffee() {
   }
 }
 
+function click_return() {
+  if (coin > 0) {
+    coin -= coin;
+    color_change();
+    document.getElementById("current").innerHTML = coin + "원";
+  } else {
+    alert("잔돈이 없습니다.");
+  }
+}
+
+function click_Eng() {
+  document.getElementById("coke").setAttribute("value", "Coke(1100 WON)");
+  document.getElementById("water").setAttribute("value", "Water(600 WON)");
+  document.getElementById("coffee").setAttribute("value", "Coffee(700 WON)");
+  document.getElementById("btn1").setAttribute("value", "100 WON");
+  document.getElementById("btn2").setAttribute("value", "500 WON");
+  document.getElementById("btn3").setAttribute("value", "1000 WON");
+  document.getElementById("btn4").setAttribute("value", "5000 WON");
+  document.getElementById("btn5").setAttribute("value", "10000 WON");
+  document.getElementById("return").setAttribute("value", "Return");
+}
+
+function click_Kor() {
+  window.location.reload(true);
+}
+
 const btn1 = document.getElementById("btn1");
 btn1.addEventListener("click", click_btn1);
 
@@ -118,3 +148,12 @@ water.addEventListener("click", click_water);
 
 const coffee = document.getElementById("coffee");
 coffee.addEventListener("click", click_coffee);
+
+const return_btn = document.getElementById("return");
+return_btn.addEventListener("click", click_return);
+
+const Kor = document.getElementById("Kor");
+Kor.addEventListener("click", click_Kor);
+
+const Eng = document.getElementById("Eng");
+Eng.addEventListener("click", click_Eng);
