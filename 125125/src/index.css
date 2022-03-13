@@ -22,11 +22,22 @@ body {
   background: #6694ff;
 }
 
+#card {
+  width: 100px;
+  color: black;
+  background: rgb(178, 255, 102);
+  margin-left: 50px;
+}
 #return {
   margin: 5px;
   background: red;
   border-radius: 0.7rem;
   width: 70px;
+}
+
+#money {
+  position: relative;
+  margin-left: 97px;
 }
 
 #current {

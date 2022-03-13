@@ -4,30 +4,32 @@ var coin = 0; //처음 돈 상태는 0원
 //현재 잔액 확인해주는 것 (현재 coin값이 html에 찍히게 함)
 document.getElementById("current").innerHTML = coin + "원";
 
+var balance = 0; // 현재 카드 잔액
+
 //현재 금액에 따라 제품색상 변하게 해주는 함수
 
 function color_change() {
   //만약 1000원이상 들어있으면 모든 제품을 다 구매가능하니 전부 파란색으로 변경
-  if (coin >= 1100) {
+  if (coin >= 1100 || balance >= 1100) {
     document.getElementById("coke").style.color = "rgb(51,255,51)";
     document.getElementById("water").style.color = "rgb(51,255,51)";
     document.getElementById("coffee").style.color = "rgb(51,255,51)";
-  } else if (coin >= 700) {
+  } else if (coin >= 700 || balance >= 700) {
     document.getElementById("coke").style.color = "rgb(255,51,51)";
     document.getElementById("water").style.color = "rgb(51,255,51)";
     document.getElementById("coffee").style.color = "rgb(51,255,51)";
-  } else if (coin >= 600) {
+  } else if (coin >= 600 || balance >= 600) {
     document.getElementById("coke").style.color = "rgb(255,51,51)";
     document.getElementById("water").style.color = "rgb(51,255,51)";
     document.getElementById("coffee").style.color = "rgb(255,51,51)";
-  } else if (coin === 0) {
-    document.getElementById("coke").style.color = "white";
-    document.getElementById("water").style.color = "white";
-    document.getElementById("coffee").style.color = "white";
-  } else {
+  } else if (coin < 600 || balance < 600) {
     document.getElementById("coke").style.color = "rgb(255,51,51)";
     document.getElementById("water").style.color = "rgb(255,51,51)";
     document.getElementById("coffee").style.color = "rgb(255,51,51)";
+  } else {
+    document.getElementById("coke").style.color = "white";
+    document.getElementById("water").style.color = "white";
+    document.getElementById("coffee").style.color = "white";
   }
 }
 //버튼1을 클릭하면 현재 금액(coin)에 1000원추가됨
@@ -66,44 +68,72 @@ function click_btn5() {
   document.getElementById("current").innerHTML = coin + "원";
 }
 
+function click_card() {
+  balance = 100000;
+  document.getElementById("current").innerHTML = "Card Payment";
+  document.getElementById("coke").style.color = "rgb(51,255,51)";
+  document.getElementById("water").style.color = "rgb(51,255,51)";
+  document.getElementById("coffee").style.color = "rgb(51,255,51)";
+}
+
 function click_coke() {
-  if (coin < 1100) {
+  if (coin < 1100 && balance < 1100) {
     alert("돈이 부족합니다");
-  } else {
+  } else if (coin >= 1100) {
     coin -= 1100;
     alert("콜라 뽑음");
     color_change();
     document.getElementById("current").innerHTML = coin + "원";
+  } else {
+    balance -= 1100;
+    alert("콜라 뽑음");
+    color_change();
   }
 }
 
 function click_water() {
-  if (coin < 600) {
+  if (coin < 600 && balance < 600) {
     alert("돈이 부족합니다");
-  } else {
+  } else if (coin >= 600) {
     coin -= 600;
     alert("물 뽑음");
     color_change();
     document.getElementById("current").innerHTML = coin + "원";
+  } else {
+    balance -= 600;
+    alert("물 뽑음");
+    color_change();
   }
 }
 
 function click_coffee() {
-  if (coin < 700) {
+  if (coin < 700 && balance < 700) {
     alert("돈이 부족합니다");
-  } else {
+  } else if (coin >= 700) {
     coin -= 700;
     alert("커피 뽑음");
     color_change();
     document.getElementById("current").innerHTML = coin + "원";
+  } else {
+    balance -= 700;
+    alert("커피 뽑음");
+    color_change();
   }
 }
 
 function click_return() {
   if (coin > 0) {
     coin -= coin;
-    color_change();
+    document.getElementById("coke").style.color = "white";
+    document.getElementById("water").style.color = "white";
+    document.getElementById("coffee").style.color = "white";
     document.getElementById("current").innerHTML = coin + "원";
+  } else if (balance > 0) {
+    balance -= balance;
+    document.getElementById("coke").style.color = "white";
+    document.getElementById("water").style.color = "white";
+    document.getElementById("coffee").style.color = "white";
+    document.getElementById("current").innerHTML = balance + "원";
   } else {
     alert("잔돈이 없습니다.");
   }
@@ -119,6 +149,8 @@ function click_Eng() {
   document.getElementById("btn4").setAttribute("value", "5000 WON");
   document.getElementById("btn5").setAttribute("value", "10000 WON");
   document.getElementById("return").setAttribute("value", "Return");
+  document.getElementById("card").setAttribute("value", "Card");
+  document.getElementById("amount").innerHTML = "Current Amount : ";
 }
 
 function click_Kor() {
@@ -139,6 +171,9 @@ btn4.addEventListener("click", click_btn4);
 
 const btn5 = document.getElementById("btn5");
 btn5.addEventListener("click", click_btn5);
+
+const card = document.getElementById("card");
+card.addEventListener("click", click_card);
 
 const coke = document.getElementById("coke");
 coke.addEventListener("click", click_coke);
