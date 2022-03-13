@@ -1,38 +1,46 @@
 import "../src/index.css";
 
-var coin = 0; //처음 돈 상태는 0원
-//현재 잔액 확인해주는 것 (현재 coin값이 html에 찍히게 함)
+var coin = 0; // 처음 현금 기본값 0 원
 document.getElementById("current").innerHTML = coin + "원";
+// 현재 금액을 나타내는 부분
 
 var balance = 0; // 현재 카드 잔액
 
-//현재 금액에 따라 제품색상 변하게 해주는 함수
-
+// 금액에 따른 색 변환
 function color_change() {
-  //만약 1000원이상 들어있으면 모든 제품을 다 구매가능하니 전부 파란색으로 변경
+  // 현금이나 카드 잔액이 1100원 이상일때
   if (coin >= 1100 || balance >= 1100) {
     document.getElementById("coke").style.color = "rgb(51,255,51)";
     document.getElementById("water").style.color = "rgb(51,255,51)";
     document.getElementById("coffee").style.color = "rgb(51,255,51)";
-  } else if (coin >= 700 || balance >= 700) {
+  }
+  // 현금이나 카드 잔액이 700원 이상일때
+  else if (coin >= 700 || balance >= 700) {
     document.getElementById("coke").style.color = "rgb(255,51,51)";
     document.getElementById("water").style.color = "rgb(51,255,51)";
     document.getElementById("coffee").style.color = "rgb(51,255,51)";
-  } else if (coin >= 600 || balance >= 600) {
+  }
+  // 현금이나 카드 잔액이 600원 이상일때
+  else if (coin >= 600 || balance >= 600) {
     document.getElementById("coke").style.color = "rgb(255,51,51)";
     document.getElementById("water").style.color = "rgb(51,255,51)";
     document.getElementById("coffee").style.color = "rgb(255,51,51)";
-  } else if (coin < 600 || balance < 600) {
+  }
+  // 현금이나 카드 잔액이 600원 미만일때
+  else if (coin < 600 || balance < 600) {
     document.getElementById("coke").style.color = "rgb(255,51,51)";
     document.getElementById("water").style.color = "rgb(255,51,51)";
     document.getElementById("coffee").style.color = "rgb(255,51,51)";
-  } else {
+  }
+  // 초기화 상태
+  else {
     document.getElementById("coke").style.color = "white";
     document.getElementById("water").style.color = "white";
     document.getElementById("coffee").style.color = "white";
   }
 }
-//버튼1을 클릭하면 현재 금액(coin)에 1000원추가됨
+
+// btn1(100원) 버튼 눌렀을 때
 function click_btn1() {
   coin = coin + 100;
   color_change();
@@ -40,6 +48,7 @@ function click_btn1() {
   document.getElementById("current").innerHTML = coin + "원";
 }
 
+// btn2(500원) 버튼 눌렀을 때
 function click_btn2() {
   coin += 500;
   color_change();
@@ -47,6 +56,7 @@ function click_btn2() {
   document.getElementById("current").innerHTML = coin + "원";
 }
 
+// btn3(1000원) 버튼 눌렀을 때
 function click_btn3() {
   coin += 1000;
   color_change();
@@ -54,6 +64,7 @@ function click_btn3() {
   document.getElementById("current").innerHTML = coin + "원";
 }
 
+// btn4(5000원) 버튼 눌렀을 때
 function click_btn4() {
   coin += 5000;
   color_change();
@@ -61,6 +72,7 @@ function click_btn4() {
   document.getElementById("current").innerHTML = coin + "원";
 }
 
+// btn5(10000원) 버튼 눌렀을 때
 function click_btn5() {
   coin += 10000;
   color_change();
@@ -68,6 +80,7 @@ function click_btn5() {
   document.getElementById("current").innerHTML = coin + "원";
 }
 
+// 카드 결제 버튼을 눌렀을때
 function click_card() {
   balance = 100000;
   document.getElementById("current").innerHTML = "Card Payment";
@@ -76,6 +89,7 @@ function click_card() {
   document.getElementById("coffee").style.color = "rgb(51,255,51)";
 }
 
+// 콜라를 눌렀을 때
 function click_coke() {
   if (coin < 1100 && balance < 1100) {
     alert("돈이 부족합니다");
@@ -91,6 +105,7 @@ function click_coke() {
   }
 }
 
+// 물을 눌렀을 때
 function click_water() {
   if (coin < 600 && balance < 600) {
     alert("돈이 부족합니다");
@@ -106,6 +121,7 @@ function click_water() {
   }
 }
 
+// 커피를 눌렀을 때
 function click_coffee() {
   if (coin < 700 && balance < 700) {
     alert("돈이 부족합니다");
@@ -121,6 +137,7 @@ function click_coffee() {
   }
 }
 
+// 반환 버튼을 눌렀을 때
 function click_return() {
   if (coin > 0) {
     coin -= coin;
@@ -139,6 +156,7 @@ function click_return() {
   }
 }
 
+// English(영문 변환)버튼을 눌렀을 때
 function click_Eng() {
   document.getElementById("coke").setAttribute("value", "Coke(1100 WON)");
   document.getElementById("water").setAttribute("value", "Water(600 WON)");
@@ -153,10 +171,12 @@ function click_Eng() {
   document.getElementById("amount").innerHTML = "Current Amount : ";
 }
 
+// 한국어를 눌렀을때
 function click_Kor() {
   window.location.reload(true);
 }
 
+//이벤트 실행
 const btn1 = document.getElementById("btn1");
 btn1.addEventListener("click", click_btn1);
 
