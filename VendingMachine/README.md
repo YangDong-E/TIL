@@ -1,1 +1,2 @@
-https://user-images.githubusercontent.com/85832803/158223521-60b78eff-037a-4e92-9694-6d6d013ad149.png
+
+![자판기 도식화](https://user-images.githubusercontent.com/85832803/158223677-0334bfe6-6d53-4fc4-82a3-8a6eb960c462.png)
