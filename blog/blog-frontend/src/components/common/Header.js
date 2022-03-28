@@ -9,6 +9,12 @@ const HeaderBlock = styled.div`
     width: 100%;
     background: white;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+
+    @media screen and (max-width: 500px) {
+        flex-direction: column;
+        align-items: flex-end;
+        display: none;
+    }
 `;
 
 /**
