@@ -19,6 +19,7 @@
     button {
         // 기본 스타일 초기화
         background: none;
+        //윤곽선 설정
         outline: none;
         border: none;
         background: #868e96;
@@ -28,7 +29,10 @@
         font-size: 1.5rem;
         display: flex;
         align-items: center;
+        // 마우스 포인터가 요소 위에 있을 때 표시할 마우스 커서를 설정한다.
         cursor: pointer;
+        // CSS의 프로퍼티의 값이 변화할 때, 변화가 정해진 시간에 걸쳐 일어나도록 하는 것.
+        // 0.1s : 변화 시간, background : 변화를 일으킬 속성, ease-in : 처음엔 천천히 바뀌다가 점점 동일한 속도를 가짐
         transition: 0.1s background ease-in;
         &:hover {
             background: #adb5bd;

@@ -2,6 +2,9 @@
     padding: 1rem;
     display: flex;
     align-items: center; // 세로 중앙 정렬
+    // 형제 사이에서의 순서에 따라 요소를 선택한다.
+    // even : 짝수번째 요소를 나타낸다.
+    // 이 프로젝트에서는 할 일 목록중 짝수번째 색을 변화시켰다.
     &:nth-child(even) {
         background: #f8f9fa;
     }
@@ -41,6 +44,7 @@
     }
 
     // 엘리먼트 사이사이에서 테두리를 넣어 줌
+    // & : 자기 자신
     & + & {
         border-top: 1px solid #dee2e6;
     }
