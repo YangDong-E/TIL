@@ -59,6 +59,7 @@ const App = () => {
             checked: false,
         };
         // concat을 사용하여 추가
+
         // useState의 함수형 업데이트를 사용한 컴포넌트 성능 최적화
         // setTodos((todos) => todos.concat(todo));
 
@@ -69,6 +70,7 @@ const App = () => {
 
     const onRemove = useCallback((id) => {
         // filter를 사용하여 id를 기준으로 삭제
+
         // useState의 함수형 업데이트를 사용한 컴포넌트 성능 최적화
         // setTodos((todos) => todos.filter((todo) => todo.id !== id));
 
