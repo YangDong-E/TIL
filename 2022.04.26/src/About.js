@@ -3,8 +3,10 @@ import React from 'react';
 import qs from 'qs';
 
 // 웹 사이트를 소개하는 소개 페이지 구현
-
+// 쿼리(location 객체에 들어 있는 search값)을 받아오기 위해 웹 애플리케이션의 현재 주소에 대한 정보를 지닌 location을 props로 받아온다.
 const About = ({ location }) => {
+    //URL 쿼리를 읽을 때는 http://localhost:3000/about?detail=true 값중에서 search 값을 확인해야 한다.
+    // 하지만 이 값(?detail=true)은 문자열 형태로 되어있기때문에 객체 형태로 변환 시키기 위해 qs를 사용한다.
     const query = qs.parse(location.search, {
         ignoreQueryPrefix: true, // 이 설정을 통해 문자열 맨 앞의 ?를 생략한다.
     });

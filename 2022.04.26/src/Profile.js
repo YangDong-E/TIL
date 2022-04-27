@@ -13,7 +13,9 @@ const data = {
     },
 };
 
+// 라우트로 사용된 컴포넌트에서 match를 props로 받아온다.
 const Profile = ({ match }) => {
+    // username 파라미터를 읽어오는 작업
     const { username } = match.params;
     const profile = data[username];
     if (!profile) {
