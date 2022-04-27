@@ -1,5 +1,6 @@
 import React from 'react';
 
+// 메인 화면 (홈) 페이지 구현
 const Home = () => {
     return (
         <div>

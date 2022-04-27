@@ -1,5 +1,8 @@
 import React from 'react';
+// 쿼리 문자열을 객체로 변환할때 사용하는 qs 라이브러리
 import qs from 'qs';
+
+// 웹 사이트를 소개하는 소개 페이지 구현
 
 const About = ({ location }) => {
     const query = qs.parse(location.search, {
