@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import NewsItem from './NewsItem';
 import axios from 'axios';
@@ -18,33 +18,16 @@ const NewsListBlock = styled.div`
 `;
 
 const NewsList = ({ category }) => {
+    // 커스텀 Hook (usePromise) 사용
     const [loading, response, error] = usePromise(() => {
+        // 현재 category 값이 무엇인지에 따라 요청할 주소가 동적으로 바뀌고 있다.
+        // category 값이 all이라면 query값을 공백으로 설정하고, all이 아니라면 '&category=카테고리' 형태의 문자열을 만들도록 하였다.
         const query = category === 'all' ? '' : `&category=${category}`;
+        // 그리고 query를 주소에 포함시켰다.
         return axios.get(
             `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=9a0dfcd4abaf434583c6d423de927a57`
         );
     }, [category]);
-
-    // const [articles, setArticles] = useState(null);
-    // const [loading, setLoading] = useState(false);
-
-    // useEffect(() => {
-    //     // async를 사용하는 함수 따로 선언
-    //     const fetchData = async () => {
-    //         setLoading(true);
-    //         try {
-    //             const query = category === 'all' ? '' : `&category=${category}`;
-    //             const response = await axios.get(
-    //                 `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=9a0dfcd4abaf434583c6d423de927a57`
-    //             );
-    //             setArticles(response.data.articles);
-    //         } catch (e) {
-    //             console.log(e);
-    //         }
-    //         setLoading(false);
-    //     };
-    //     fetchData();
-    // }, [category]);
 
     // 대기 중일 때
     if (loading) {
@@ -61,11 +44,6 @@ const NewsList = ({ category }) => {
         return <NewsListBlock>에러 발생!</NewsListBlock>;
     }
 
-    // 아직 articles 값이 설정되지 않았을 때
-    // if (!articles) {
-    //     return null;
-    // }
-
     // response 값이 유효할 때
     const { articles } = response.data;
     return (
@@ -75,15 +53,6 @@ const NewsList = ({ category }) => {
             ))}
         </NewsListBlock>
     );
-
-    // articels 값이 유효할 때
-    // return (
-    //     <NewsListBlock>
-    //         {articles.map((article) => (
-    //             <NewsItem key={article.url} article={article} />
-    //         ))}
-    //     </NewsListBlock>
-    // );
 };
 
 export default NewsList;

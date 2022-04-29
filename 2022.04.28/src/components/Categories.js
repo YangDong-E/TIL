@@ -1,7 +1,8 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+// 카테고리 분류
 const categories = [
     {
         name: 'all',
@@ -33,6 +34,7 @@ const categories = [
     },
 ];
 
+// styled-components 사용법
 const CategoriesBlock = styled.div`
     display: flex;
     padding: 1rem;
@@ -44,6 +46,7 @@ const CategoriesBlock = styled.div`
     }
 `;
 
+// HTML 요소가 아닌 특정 컴포넌트에 styled-components를 사용할 때는 styled(컴포넌트이름)`` 형식으로 사용한다.
 const Category = styled(NavLink)`
     font-size: 1.125rem;
     cursor: pointer;
@@ -70,28 +73,20 @@ const Category = styled(NavLink)`
     }
 `;
 
-// &:hover{} 아래에 쓸 코드
-// ${(props) =>
-//     props.active &&
-//     css`
-//         font-weight: 600;
-//         border-bottom: 2px solid #22b8cf;
-//         &:hover {
-//             color: #3bc9db;
-//         }
-//     `}
-
-const Categories = ({ onSelect, category }) => {
+const Categories = () => {
     return (
+        // 스타일이 적용된 컴포넌트를 사용
         <CategoriesBlock>
+            {/* 카테고리의 목록을 map으로 요소마다 적용시켜준다. */}
             {categories.map((c) => (
                 <Category
                     key={c.name}
                     activeClassName="active"
                     exact={c.name === 'all'}
+                    // NavLink로 만들어진 Category 컴포넌트에 to 값은 '/카테고리이름'으로 설정되었다.
+                    // 전체 보기의 경우 예외적으로 '/all' 대신 '/'로 설정 하였다.
+                    // to 값이 '/'를 가리키고 있을 때는 exact를 true로 해주어야한다.
                     to={c.name === 'all' ? '/' : `/${c.name}`}
-                    // active={category === c.name}
-                    // onClick={() => onSelect(c.name)}
                 >
                     {c.text}
                 </Category>
