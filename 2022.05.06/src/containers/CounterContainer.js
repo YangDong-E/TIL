@@ -4,7 +4,10 @@ import Counter from '../components/Counter';
 import { decrease, increase } from '../modules/counter';
 
 const CounterContainer = () => {
+    // useSelecotr를 이용하여 connect 함수 없이 리덕스의 상태를 조회 한다.
+    // 파라미터로는 상태 선택 함수를 사용한다.
     const number = useSelector((state) => state.counter.number);
+    // useDispatch를 사용하여 컴포넌트 내부에서 스토어의 내장 함수 dispatch를 사용할 수 있게 해준다.
     const dispatch = useDispatch();
 
     // useCallback 사용으로 최적화

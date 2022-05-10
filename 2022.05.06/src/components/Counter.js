@@ -1,5 +1,6 @@
 import React from 'react';
 
+// number, onIncrease, onDecrease를 받아와 UI를 구현한다.
 const Counter = ({ number, onIncrease, onDecrease }) => {
     return (
         <div>

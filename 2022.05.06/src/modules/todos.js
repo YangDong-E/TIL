@@ -1,10 +1,14 @@
 import produce from 'immer';
 import { createAction, handleActions } from 'redux-actions';
 
+// 액션 타입 정의 하기
+
 const CHANGE_INPUT = 'todos/CHANGE_INPUT'; // 인풋 값을 변경함
 const INSERT = 'todos/INSERT'; // 새로운 todo를 등록함
 const TOGGLE = 'todos/TOGGLE'; // todo를 체크/체크 해제함
 const REMOVE = 'todos/REMOVE'; // todo를 제거함
+
+// 액션 생성 함수 만들기
 
 export const changeInput = createAction(CHANGE_INPUT, (input) => input);
 
@@ -18,6 +22,7 @@ export const insert = createAction(INSERT, (text) => ({
 export const toggle = createAction(TOGGLE, (id) => id);
 export const remove = createAction(REMOVE, (id) => id);
 
+// 초기 상태 만들기
 const initialState = {
     input: '',
     todos: [
@@ -34,6 +39,8 @@ const initialState = {
     ],
 };
 
+// 리듀서 함수 만들기
+// 모든 추가 데이터 값을 action.payload로 사용하기 때문에 객체 비구조화 할당 문법으로 action 값의 payload 이름을 새로 설정해주면 정확히 어떤 값을 의미하는지 쉽게 파악이 가능하다.
 const todos = handleActions(
     {
         [CHANGE_INPUT]: (state, { payload: input }) =>

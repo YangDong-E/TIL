@@ -1,5 +1,7 @@
 import React from 'react';
 
+// 할 일 목록에 들어갈 요소들 (따로 컴포넌트를 분리 해도 된다.)
+// todo, onToggle, onRemove를 받아와 UI구현
 const TodoItem = ({ todo, onToggle, onRemove }) => {
     return (
         <div>
@@ -19,6 +21,7 @@ const TodoItem = ({ todo, onToggle, onRemove }) => {
     );
 };
 
+// 할 일 목록 UI 구현
 const Todos = ({
     input, // 인풋에 입력되는 텍스트
     todos, // 할 일 목록이 들어 있는 객체
