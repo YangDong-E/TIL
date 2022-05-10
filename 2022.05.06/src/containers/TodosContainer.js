@@ -12,8 +12,6 @@ const TodosContainer = () => {
     }));
 
     // useActions를 사용하여 여러개의 액션을 사용해야 할 때 코드를 훨씬 깔끔하게 정리하여 작성할 수 있다.
-    // 이 Hook은 액션 생성 함수를 액션을 디스패치하는 함수로 변환 해준다.
-    // 첫 번째 파라미터로는 액션 생성 함수로 이루어진 배열, 두 번째 파라미터로는 deps 배열이며, 이 배열 안에 들어 있는 원소가 바뀌면 액션을 디스패치하는 함수를 새로 만들게 된다.
     const [onChangeInput, onInsert, onToggle, onRemove] = useActions(
         [changeInput, insert, toggle, remove],
         []
