@@ -1,6 +1,6 @@
-import { call, put } from 'redux-saga/effects';
 import { startLoading, finishLoading } from '../modules/loading';
 
+// Saga 사용하기 전 Thunk를 사용하여 비동기 작업 관리
 export default function createRequestThunk(type, request) {
     // 성공 및 실패 액션 타입을 정의
     const SUCCESS = `${type}_SUCCESS`;

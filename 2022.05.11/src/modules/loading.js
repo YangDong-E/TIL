@@ -1,5 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 
+// 액션 타입을 선언
 const START_LOADING = 'loading/START_LOADING';
 const FINISH_LOADING = 'loading/FINISH_LOADING';
 
@@ -17,8 +18,10 @@ export const finishLoading = createAction(
     (requestType) => requestType
 );
 
+// 초기상태
 const initialState = {};
 
+// 리듀서 함수
 const loading = handleActions(
     {
         [START_LOADING]: (state, action) => ({

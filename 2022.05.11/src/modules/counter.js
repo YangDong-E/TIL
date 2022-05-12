@@ -1,6 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 import { delay, put, takeEvery, takeLatest, select } from 'redux-saga/effects';
 
+// 액션 타입을 선언
 const INCREASE = 'counter/INCREASE';
 const DECREASE = 'counter/DECREASE';
 const INCREASE_ASYNC = 'counter/INCREASE_ASYNC';
@@ -14,9 +15,11 @@ export const decrease = createAction(DECREASE);
 export const increaseAsync = createAction(INCREASE_ASYNC, () => undefined);
 export const decreaseAsync = createAction(DECREASE_ASYNC, () => undefined);
 
+// 제너레이터 함수를 만들며, 이 함수를 사가라고 부른다.
 function* increaseSaga() {
     yield delay(1000); // 1초를 기다립니다.
     yield put(increase()); // 특정 액션을 디스패치합니다.
+    // saga의 기능으로 select를 사용하여 현재 상태를 참조 할 수 있다.
     const number = yield select((state) => state.counter); // state는 스토어 상태를 의미함
     console.log(`현재 값은 ${number} 입니다.`);
 }
@@ -34,21 +37,10 @@ export function* counterSaga() {
     yield takeLatest(DECREASE_ASYNC, decreaseSaga);
 }
 
-// 1초 뒤에 increase 혹은 decrease 함수를 디스패치함
-// export const increaseAsync = () => (dispatch) => {
-//     setTimeout(() => {
-//         dispatch(increase());
-//     }, 1000);
-// };
-
-// export const decreaseAsync = () => (dispatch) => {
-//     setTimeout(() => {
-//         dispatch(decrease());
-//     }, 1000);
-// };
-
+// 초기 상태
 const initialState = 0; // 상태는 꼭 객체일 필요가 없다. 숫자도 작동 가능
 
+// 리듀서 함수
 const counter = handleActions(
     {
         [INCREASE]: (state) => state + 1,

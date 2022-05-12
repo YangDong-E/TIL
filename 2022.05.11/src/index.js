@@ -15,6 +15,7 @@ const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
     rootReducer,
+    // composeWithDevTools를 사용하여 리덕스 개발자 도구 사용하기
     composeWithDevTools(applyMiddleware(logger, thunk, sagaMiddleware))
 );
 sagaMiddleware.run(rootSaga);
