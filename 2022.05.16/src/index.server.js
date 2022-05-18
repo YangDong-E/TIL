@@ -12,6 +12,8 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer, { rootSaga } from './modules';
 import PreloadContext from './lib/PreloadContext';
 import { END } from 'redux-saga';
+
+// 서버 사이드 렌더링 후 브라우저에서 어떤 파일을 사전에 불러와야 할지 알아내고 필요한 청크 파일 경로를 추출하기 위해 사용하는 함수
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
 
 const statsFile = path.resolve('./build/loadable-stats.json');
@@ -64,6 +66,10 @@ const serverRender = async (req, res, next) => {
         applyMiddleware(thunk, sagaMiddleware)
     );
 
+    // redux-thunk를 사용하면 Preloader를 통해 호출한 함수들이 Promise로 반환하지만,
+    // redux-saga를 사용하면 Promise를 반환하지 않기 때문에 toPromise를 사용해준다.
+    // toPromise는 sagaMiddleware.run을 통해 만든 Task를 Promise로 반환한다.
+    // redux-saga의 END라는 액션을 발생시키면 끝낼 수 있는데 Promise가 끝나는 시점에 리덕스 스토어에 원하는 데이터가 채워진다.
     const sagaPromise = sagaMiddleware.run(rootSaga).toPromise();
 
     const preloadContext = {
@@ -86,6 +92,8 @@ const serverRender = async (req, res, next) => {
         </ChunkExtractorManager>
     );
 
+    // renderToString 대신 renderToStaticMarkup을 사용한 이유는 Preloader로 넣어주었던 함수를 호출하는데에 처리속도가 더 빠르기 때문이다.
+    // 또한 renderToStaticMarkup은 리액트를 사용하여 정적인 페이지를 만들 때 사용한다.
     ReactDOMServer.renderToStaticMarkup(jsx); // renderToStaticMarkup으로 한번 렌더링합니다.
     store.dispatch(END); // redux-saga의 END 액션을 발생시키면 액션을 모니터링하는 사가들이 모두 종료됩니다.
     try {

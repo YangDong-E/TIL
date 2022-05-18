@@ -6,6 +6,7 @@ const PreloadContext = createContext(null);
 export default PreloadContext;
 
 // resolve는 함수 타입입니다.
+// resolve라는 함수를 props로 받아오면서 컴포넌트가 렌더링될 때 서버 환경에서만 resolve 함수를 호출해 준다.
 export const Preloader = ({ resolve }) => {
     const preloadContext = useContext(PreloadContext);
     if (!preloadContext) return null; // context 값이 유효하지 않다면 아무것도 하지 않음
@@ -18,6 +19,7 @@ export const Preloader = ({ resolve }) => {
     return null;
 };
 
+// Preloader 컴포넌트 대신 usePreloader라는 커스텀 Hook 함수를 만들어서 편리하게 작업
 // Hook 형태로 사용할 수 있는 함수
 export const usePreloader = (resolve) => {
     const preloadContext = useContext(PreloadContext);
