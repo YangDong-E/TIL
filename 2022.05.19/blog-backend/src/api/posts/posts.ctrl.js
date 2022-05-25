@@ -13,6 +13,7 @@ const posts = [
 Post /api/posts
 { title, body }
 */
+// exports.이름 = 형식으로 함수를 내보낸다.
 exports.write = (ctx) => {
     // REST API의 Request Body는 ctx.request.body에서 조회할 수 있습니다.
     const { title, body } = ctx.request.body;

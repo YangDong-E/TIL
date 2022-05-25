@@ -1,4 +1,7 @@
 const Router = require('koa-router');
+
+// const 모듈 이름 = require('파일이름');
+// 모듈이름.이름(); 형식으로 불러올 수 있다.
 const postsCtrl = require('./posts.ctrl');
 
 const posts = new Router();
