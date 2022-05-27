@@ -8,8 +8,8 @@ posts.get('/', postsCtrl.list);
 posts.post('/', postsCtrl.write);
 
 const post = new Router(); // /api/posts/:id
-// 코드 리팩토링 후
 
+// 코드 리팩토링 후
 post.get('/', postsCtrl.read);
 post.delete('/', postsCtrl.remove);
 post.patch('/', postsCtrl.update);
