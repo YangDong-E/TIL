@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
+// 스키마를 만들 때 각 필드의 이름과 필드의 데이터 타입 정보가 들어있는 객체를 작성
+// 필드의 기본 값으로는 defalut값을 설정해 주면 된다.
 const PostSchema = new Schema({
     title: String,
     body: String,
@@ -9,6 +11,10 @@ const PostSchema = new Schema({
     publishedDate: {
         type: Date,
         default: Date.now, // 현재 날짜를 기본값으로 지정
+    },
+    user: {
+        _id: mongoose.Types.ObjectId,
+        username: String,
     },
 });
 
