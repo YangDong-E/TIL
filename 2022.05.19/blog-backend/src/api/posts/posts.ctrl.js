@@ -27,8 +27,10 @@ export const getPostById = async (ctx, next) => {
     }
 };
 
+// id로 찾은 포스트가 로그인 중인 사용자가 작성한 포스트인지 확인해주는 미들웨어
 export const checkOwnPost = (ctx, next) => {
     const { user, post } = ctx.state;
+    // MongoDB에서 조회한 데이터의 id 값을 문자열과 비교할 때는 반드시 .toString()을 해 주어야 한다.
     if (post.user._id.toString() !== user._id) {
         ctx.status = 403;
         return;

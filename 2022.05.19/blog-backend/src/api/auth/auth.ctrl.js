@@ -25,6 +25,7 @@ export const register = async (ctx) => {
     const { username, password } = ctx.request.body;
     try {
         // username이 이미 존재하는지 확인
+        // findByUsername 스태틱 메서드를 사용하여 처리
         const exists = await User.findByUsername(username);
         if (exists) {
             ctx.status = 409; // Conflict
@@ -34,6 +35,7 @@ export const register = async (ctx) => {
         const user = new User({
             username,
         });
+        // setPassword 인스턴스 메서드를 사용
         await user.setPassword(password); // 비밀번호 설정
         await user.save(); // 데이터베이스에 저장
 
