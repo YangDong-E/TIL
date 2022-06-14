@@ -16,6 +16,7 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(sagaMiddleware)),
 );
 
+// index.js에서 사용자 정보를 불러오도록 처리하고 컴포넌트를 렌더링시켜 깜빡임 현상을 없앰
 function loadUser() {
     try {
         const user = localStorage.getItem('user');
@@ -28,6 +29,8 @@ function loadUser() {
 }
 
 sagaMiddleware.run(rootSaga);
+// sagaMiddleware.run이 호출된 이후에 loadUser함수를 호출
+// 먼저 호출되면 CHECK 액션을 디스패치했을 때 사가에서 제대로 처리를 하지 못한다.
 loadUser();
 
 ReactDOM.render(

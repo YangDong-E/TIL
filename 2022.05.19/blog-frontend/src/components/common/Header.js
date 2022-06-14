@@ -5,6 +5,7 @@ import Button from './Button';
 import { Link } from 'react-router-dom';
 
 const HeaderBlock = styled.div`
+    /* position을 fixed로 설정하여 페이지 상단에 위치시킴 */
     position: fixed;
     width: 100%;
     background: white;
@@ -56,6 +57,7 @@ const Header = ({ user, onLogout }) => {
                         </div>
                     ) : (
                         <div className="right">
+                            {/* Button 컴포넌트에 to 값을 props로 넣어주면 Link 컴포넌트처럼 작동 */}
                             <Button to="/login">로그인</Button>
                         </div>
                     )}

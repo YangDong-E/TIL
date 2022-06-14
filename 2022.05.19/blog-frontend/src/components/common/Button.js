@@ -41,12 +41,14 @@ const StyledButton = styled.button`
     ${buttonStyle}
 `;
 
+// withRouter와 Link 두 방법이 있지만 웹 접근성을 위해서 Link컴포넌트는 a태그를 사용하기 때문에 Link를 사용하였다.
 const StyledLink = styled(Link)`
     ${buttonStyle}
 `;
 
 const Button = (props) => {
     return props.to ? (
+        // props.cyan 값을 0과 1로 변환해주어 styled 함수로 감싸서 만든 경우에도 임의 props가 필터링 되기 위해
         <StyledLink {...props} cyan={props.cyan ? 1 : 0} />
     ) : (
         <StyledButton {...props} />
