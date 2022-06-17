@@ -35,6 +35,7 @@ const QuillWrapper = styled.div`
 `;
 
 const Editor = ({ title, body, onChangeField }) => {
+    // useRef 와 useEffect를 사용하여 외부 라이브러리와 연동을 한다.
     const quillElement = useRef(null); // Quill을 적용할 DivElement를 설정
     const quillInstance = useRef(null); // Quill 인스턴스를 설정
 
@@ -69,11 +70,13 @@ const Editor = ({ title, body, onChangeField }) => {
     };
     return (
         <EditorBlock>
+            {/* 제목은 Input을 사용 */}
             <TitleInput
                 placeholder="제목을 입력하세요"
                 onChange={onChangeTitle}
                 value={title}
             />
+            {/* 내용은 Quill 에디터를 사용한다. */}
             <QuillWrapper>
                 <div ref={quillElement} />
             </QuillWrapper>
