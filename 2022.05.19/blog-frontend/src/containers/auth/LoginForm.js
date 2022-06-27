@@ -52,6 +52,7 @@ const LoginForm = ({ history }) => {
     useEffect(() => {
         if (user) {
             history.push('/');
+            // 로그인할 때 사용자 정보를 localStorage에 저장
             try {
                 localStorage.setItem('user', JSON.stringify(user));
             } catch (e) {

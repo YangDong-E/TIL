@@ -81,6 +81,7 @@ const RegisterForm = ({ history }) => {
     useEffect(() => {
         if (user) {
             history.push('/'); // 홈 화면으로 이동
+            // 회원가입할 떄 사용자 정보를 localStorage에 저장
             try {
                 localStorage.setItem('user', JSON.stringify(user));
             } catch (e) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
@@ -32,8 +32,8 @@ sagaMiddleware.run(rootSaga);
 // sagaMiddleware.run이 호출된 이후에 loadUser함수를 호출
 // 먼저 호출되면 CHECK 액션을 디스패치했을 때 사가에서 제대로 처리를 하지 못한다.
 loadUser();
-
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
     <Provider store={store}>
         <BrowserRouter>
             <App />
