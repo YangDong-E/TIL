@@ -61,6 +61,7 @@ console.log(result)     // 5050
 
 
 // fold.ts
+
 // 배열 안의 수를 더하는 데이터 가공
 
 export const fold = <T>(array: T[], callback: (result: T, val: T), initValue: T) => {
@@ -71,3 +72,4 @@ export const fold = <T>(array: T[], callback: (result: T, val: T), initValue: T)
     }
     return result
 }
+
