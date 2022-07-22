@@ -6,6 +6,7 @@
 
 // clearInterval(intervalID)
 
+// 1초 간격으로 1, 2, 3을 출력하는 함수
 const period = 1000
 let count = 0
 console.log('program started...')
