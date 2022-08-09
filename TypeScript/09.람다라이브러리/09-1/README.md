@@ -24,10 +24,11 @@
 3. 프로젝트 생성 순서
 
     ```
+    1. 디렉터리 생성
     > npm init --y
     > npm i -D typescript ts-node @types/node
     > mkdir src
-
+    2. ramda 패키지 설치
     > npm i -S ramda
     > npm i -D @types/ramda
     ```
