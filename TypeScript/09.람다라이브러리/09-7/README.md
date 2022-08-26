@@ -42,3 +42,10 @@
     ```javascript
     렌즈 = R.lensPath(['location', 'coordinates', 'longitude']);
     ```
+
+6. 진행하면서 오류 발생 및 해결
+
+    - lens.ts 에서 'export const makeLens = (propName: string) => R.lens(R.prop(propName), R.assoc(propName));' 이 부분을 작성할때 에러가 발생했다.
+    - 이 오류가 발생한 이유는 객체 타입의 데이터를 매개변수로 넘겨줄 때 그 매개변수의 타입을 string으로 해놓고 넘겨주고 있어서 발생한 오류였다.
+    - 구글링을 통하여 파라미터 타입을 변경하는 방법이 있었지만, 나는 tsconfig.json를 생성하지 않고 내용을 작성하지 않아서 발생한 에러가 같아서 다시 작성을 하여 에러를 해결하였다.
+    - 그렇기에 tsconfig.json 내용 작성에 좀 더 신경을 써야겠다는 생각을 하였다.
